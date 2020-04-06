@@ -1,0 +1,38 @@
+#include <iostream>
+
+class MyString {
+	
+	protected : 
+		char* string_; //pointeur vers notre le caracter alloué
+		int length_;  // taille du string
+		int capacity_; // nombre de caractères alloués
+
+	public :
+		//student A : copy - constructor
+
+		MyString (MyString &string);
+		char * c_str()
+		void clear()
+		size_t size();
+		MyString operator=(char c);
+        MyString operator+(const string&, const char* c);
+
+		//student B : constructor from a c-string
+
+		MyString(); 	//Default constructor
+		MyString(char &string); //MyString constructor
+		size_t length();
+		size_t max_size();
+		void resize(size_t n, char c);
+		operator=(const string&);
+		operator+(const string&, char c);
+
+
+		//student C : Destructor
+		~MyString();
+		size_t capacity();
+		bool empty();
+		void reserve(size_t);
+		operator=(const char* c);
+		operator+(const string&, const string&);
+};
