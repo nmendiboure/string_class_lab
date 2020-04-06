@@ -8,7 +8,7 @@ class MyString {
 		int capacity_; // nombre de caractères alloués
 
 	public :
-		//student A : copy - constructor
+		//Student A : copy - constructor
 
 		MyString (MyString &string);
 		char * c_str()
@@ -17,7 +17,7 @@ class MyString {
 		MyString operator=(char c);
         MyString operator+(const string&, const char* c);
 
-		//student B : constructor from a c-string
+		//Student B : constructor from a c-string
 
 		MyString(); 	//Default constructor
 		MyString(char &string); //MyString constructor
@@ -28,11 +28,12 @@ class MyString {
 		operator+(const string&, char c);
 
 
-		//student C : Destructor
+		//Student C : Destructor
 		~MyString();
 		size_t capacity();
 		bool empty();
 		void reserve(size_t);
 		operator=(const char* c);
 		operator+(const string&, const string&);
+
 };
