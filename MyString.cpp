@@ -7,20 +7,16 @@ MyString::MyString(const MyString& string){  //copy constructor
     string_   = new char[length_];
     for (int j=0; j < length_; j++)
         string_[j] = string[j];
-
-
 };
 
 
 char* MyString::c_str(){ // getter du copy constructeur
-
 	return string_;
 };
 
 
 size_t MyString::size(){
-
-
+	return length;
 };
 
 
@@ -78,21 +74,29 @@ MyString::MyString(const char* c){
 
 
 size_t MyString::length(){
-
 	return length;
 };
 
 
 
 size_t MyString::max_size(){
-	size_t limit_size = 100;
-	return limit_size;
+	return 100;
 };
 
 
 
 void MyString::resize(size_t n,char c){
+	if (string_.length() < string_max_size() - n) {
+		string_.length() += n;
+		for (int i = n; i = string_.length() - 1; i--){
+			string_[i] = c;
+		}
+	} else {
+		return 0;
+	}
+	
 
+	
 
 };
 
