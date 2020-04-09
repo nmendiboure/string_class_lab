@@ -1,11 +1,8 @@
-#include <iostream>
-
 class MyString {
 	
 	protected : 
 		char* string_; //pointeur vers notre le caracter alloué
 		int length_;  // taille du string
-		int capacity_; // nombre de caractères alloués
 
 	public :
 		//Student A : copy - constructor
@@ -13,7 +10,7 @@ class MyString {
 		MyString (MyString &string);
 		char * c_str()
 		void clear()
-		size_t size();
+		size_t size(); //size_t is an unsigned integral type (the same as member type string::size_type).
 		MyString operator=(char c);
         MyString operator+(const string&, const char* c);
 

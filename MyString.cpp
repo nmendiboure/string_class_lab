@@ -1,22 +1,20 @@
 #include "MyString.h"
-#include <iostream>
-
-
 
 //Student A
-MyString::MyString(const MyString& string){ 
+MyString::MyString(const MyString& string){  //copy constructor
 
 	length_ = string.length();
     string_   = new char[length_];
-    for (unsigned j=0; j < length_; j++)
-        string_[j] = s[j];
+    for (int j=0; j < length_; j++)
+        string_[j] = string[j];
 
 
 };
 
 
-char* MyString::c_str(){
+char* MyString::c_str(){ // getter du copy constructeur
 
+	return string_;
 };
 
 
@@ -51,8 +49,8 @@ MyString MyString::operator+(const string&,const char* s){
 MyString::MyString(){ //constructeur par défaut
 
     length_ = max_size();
-    string_  = new char[length_+1];
-	string_ = {'H', 'e','l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd',' ','!', '\0'};
+    string_ = new char[length_+1];
+	string_= {'H', 'e','l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd',' ','!', '\0'};
 
 };
 
