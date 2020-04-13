@@ -1,3 +1,4 @@
+#include<cstddef>
 class MyString {
 	
 	protected : 
@@ -7,12 +8,12 @@ class MyString {
 	public :
 		//Student A : copy - constructor
 
-		MyString (MyString &string);
-		char * c_str()
-		void clear()
+		MyString (const MyString& s);
+		char * c_str();
+		void clear();
 		size_t size(); //size_t is an unsigned integral type (the same as member type string::size_type).
 		MyString operator=(char c);
-        MyString operator+(const string&, const char* c);
+		
 
 		//Student B : constructor from a c-string
 
@@ -21,8 +22,8 @@ class MyString {
 		size_t length();
 		size_t max_size();
 		void resize(size_t n, char c);
-		operator=(const string&);
-		operator+(const string&, char c);
+		MyString operator=(const MyString&);
+		
 
 
 		//Student C : Destructor
@@ -30,7 +31,10 @@ class MyString {
 		size_t capacity();
 		bool empty();
 		void reserve(size_t);
-		operator=(const char* c);
-		operator+(const string&, const string&);
+		MyString operator=(const char* c);
+		
 
 };
+//MyString operator+(const MyString&,const char* c);
+//MyString operator+(const MyString& , char c);
+MyString operator+(const MyString& a, const MyString& b); //un opérateur à deux arguments doit être déclaré en dehors de la classe
