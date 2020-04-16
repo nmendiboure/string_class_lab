@@ -1,22 +1,34 @@
 #include "MyString.h"
+#include <cstring>
 
 //Student A
-MyString::MyString(const MyString& string){  //copy constructor
+MyString::MyString(const MyString &string){  //copy constructor
 
-	length_ = string.length();
+	/*length_ = string.length();
     string_  = new char[length_];
-    for (unsigned j = 0; j < length_; j++){
-        string_[j] = string[j];
+	for (int i=0; i<length_; i++){
+		string_[i] = string[i];
 	}
+	string_[length_]='\0';*/
+
+	string_ = new char[string.length() +1];
+    strcpy(string_, string.c_str());
 };
 
-char* MyString::c_str(){ // getter du copy constructeur
+char* MyString::c_str() const { // getter which return an array of char 
 	return string_;
 };
 
 
 size_t MyString::size() const{
-	;
+	size_t size;
+	size = 0;
+	size_t i = 0;
+	while(string_[i]!='\0'){
+		size += 1;
+		i++;
+	}
+	return size;
 };
 
 
@@ -41,7 +53,7 @@ MyString MyString::operator+(const char* string){
 MyString::MyString(){ //constructeur par défaut
 
 	char string[] = {'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r','l', 'd', '\0'};
-	short int i = 0;
+	size_t i = 0;
 	while(string[i] != '\0'){
 		string_[i] = string[i];
 		i++;
@@ -54,16 +66,19 @@ MyString::MyString(){ //constructeur par défaut
 
 MyString::MyString(const char* c){
 
-	 if (c) {
+	 if ((c != NULL) && (c[0] != '\0')){
 
 		int n = 0;
 		while (c[n] != '\0'){
  			n++;
 		}
+
 		length_ = n;
-		string_   = new char[n];
-		for (int j=0; j < n; j++)
+		string_ = new char[n];
+		for (int j=0; j < n; j++){
 			string_[j] = c[j];
+		}
+		string_[n]='\0';
 	}	
 	else {
 		length_ = 0;
@@ -72,27 +87,38 @@ MyString::MyString(const char* c){
 };
 
 
-
-size_t MyString::length() const {
-	return length;
-};
-
-
-
 size_t MyString::max_size() const {
 	return 100;
 };
 
 
+size_t MyString::length() const {
+
+	size_t len;
+	len = 0;
+	size_t i = 0;
+	while(string_[i]!='\0'){
+		len += 1;
+		i++;
+	}
+	return len;
+
+};
+
 
 void MyString::resize(size_t n,char c){
-	if (string_.length() < string_.max_size() - n) {
-		string_.length() += n;
-		for (int i = n; i = string_.length() - 1; i--){
+	size_t len = MyString::length();
+	if (len < MyString::max_size() - n) {
+		len += n;
+		for (int i = n; i = len - 1; i--){
 			string_[i] = c;
 		}
 	}
 };
+
+
+
+
 
 
 MyString MyString::operator=(const MyString &string){
