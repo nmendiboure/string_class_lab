@@ -12,7 +12,10 @@ MyString::MyString(const MyString &string){  //copy constructor
 	string_[length_]='\0';*/
 
 	string_ = new char[string.length() +1];
-    strcpy(string_, string.c_str());
+    //strcpy(string_, string.c_str());
+	memcpy(string_,const string,string.length()+1);
+
+
 };
 
 char* MyString::c_str() const { // getter which return an array of char 
