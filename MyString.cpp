@@ -33,7 +33,7 @@ MyString MyString::operator=(char c){
 
 };
 
-MyString MyString::operator+(const string&,const char* s){
+MyString MyString::operator+(const MyString&,const char* s){
 
 
 };
@@ -73,13 +73,13 @@ MyString::MyString(const char* c){
 
 
 
-size_t MyString::length(){
+size_t MyString::length() const {
 	return length;
 };
 
 
 
-size_t MyString::max_size(){
+size_t MyString::max_size() const {
 	return 100;
 };
 
@@ -91,7 +91,7 @@ void MyString::resize(size_t n,char c){
 		for (int i = n; i = string_.length() - 1; i--){
 			string_[i] = c;
 		}
-	} else {
+	}else {
 		return 0;
 	}
 	
@@ -101,7 +101,7 @@ void MyString::resize(size_t n,char c){
 };
 
 
-MyString MyString::operator=(const string&){
+MyString MyString::operator=(const MyString&){
 
 
 
@@ -109,7 +109,7 @@ MyString MyString::operator=(const string&){
 
 
 
-MyString MyString::operator+(const string&, char c){
+MyString MyString::operator+(const MyString&, char c){
 
 
 };
