@@ -1,4 +1,3 @@
-#include<cstddef>
 class MyString {
 	
 	protected : 
@@ -7,8 +6,8 @@ class MyString {
 
 	public :
 		//Student A : copy - constructor
-		MyString (const MyString& string);
-		char * c_str();
+		MyString (const MyString &string);
+		char * c_str() const;
 		void clear();
 		size_t size() const; //size_t is an unsigned integral type (the same as member type string::size_type).
 		MyString operator=(char c);
