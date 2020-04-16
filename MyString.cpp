@@ -4,38 +4,34 @@
 MyString::MyString(const MyString& string){  //copy constructor
 
 	length_ = string.length();
-    string_   = new char[length_];
-    for (int j=0; j < length_; j++)
+    string_  = new char[length_];
+    for (unsigned j = 0; j < length_; j++){
         string_[j] = string[j];
+	}
 };
-
 
 char* MyString::c_str(){ // getter du copy constructeur
 	return string_;
 };
 
 
-size_t MyString::size(){
-	return length;
+size_t MyString::size() const{
+	;
 };
 
 
 
 void MyString::clear(){
-
-
+	;
 };
 
 
 MyString MyString::operator=(char c){
-
-
-
+	;
 };
 
-MyString MyString::operator+(const MyString&,const char* s){
-
-
+MyString MyString::operator+(const char* string){
+	;
 };
 
 
@@ -44,9 +40,13 @@ MyString MyString::operator+(const MyString&,const char* s){
 
 MyString::MyString(){ //constructeur par défaut
 
-    length_ = max_size();
-    string_ = new char[length_+1];
-	string_= {'H', 'e','l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd',' ','!', '\0'};
+	char string[] = {'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r','l', 'd', '\0'};
+	short int i = 0;
+	while(string[i] != '\0'){
+		string_[i] = string[i];
+		i++;
+	};
+	string_[i] = string[i];
 
 };
 
@@ -86,43 +86,31 @@ size_t MyString::max_size() const {
 
 
 void MyString::resize(size_t n,char c){
-	if (string_.length() < string_max_size() - n) {
+	if (string_.length() < string_.max_size() - n) {
 		string_.length() += n;
 		for (int i = n; i = string_.length() - 1; i--){
 			string_[i] = c;
 		}
-	}else {
-		return 0;
 	}
-	
-
-	
-
 };
 
 
-MyString MyString::operator=(const MyString&){
-
-
-
+MyString MyString::operator=(const MyString &string){
+	;
 };
 
 
 
-MyString MyString::operator+(const MyString&, char c){
-
-
+MyString MyString::operator+(char c){
+	;
 };
 
 
 
 //Student C
 
-
-
 MyString::~MyString(){
 	delete [] string_;
-
 };
 
 
