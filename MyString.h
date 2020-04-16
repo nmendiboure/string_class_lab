@@ -19,8 +19,8 @@ class MyString {
 
 		MyString(); 	//Default constructor
 		MyString(char &string); //MyString constructor
-		size_t length();
-		size_t max_size();
+		size_t length() const;
+		size_t max_size() const;
 		void resize(size_t n, char c);
 		MyString operator=(const MyString&);
 		
@@ -35,6 +35,8 @@ class MyString {
 		
 
 };
-//MyString operator+(const MyString&,const char* c);
-//MyString operator+(const MyString& , char c);
-MyString operator+(const MyString& a, const MyString& b); //un opérateur à deux arguments doit être déclaré en dehors de la classe
+MyString operator+(const MyString&,const char* c); //un opérateur à deux arguments doit être déclaré en dehors de la classe
+MyString operator+(const MyString& , char c);//un opérateur à deux arguments doit être déclaré en dehors de la classe
+
+
+//MyString operator+(const MyString& a, const MyString& b); //un opérateur à deux arguments doit être déclaré en dehors de la classe
