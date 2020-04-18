@@ -2,7 +2,7 @@ class MyString {
 	
 	protected : 
 		char* string_; //pointeur vers notre le caracter alloué
-		size_t length_;  // taille du string
+		size_t len_(const char* s) const ; 
 
 	public :
 		//Student A : copy - constructor
