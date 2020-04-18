@@ -1,43 +1,33 @@
 #include "MyString.h"
-#include <cstring>
 
-//Student A
+// ###################   Student A  ######################
+
 MyString::MyString(const MyString &string){  //copy constructor
 
-	/*length_ = string.length();
-    string_  = new char[length_];
-	for (int i=0; i<length_; i++){
-		string_[i] = string[i];
-	}
-	string_[length_]='\0';*/
-
-	string_ = new char[string.length() +1];
-    //strcpy(string_, string.c_str());
-	memcpy(string_,const string,string.length()+1);
-
-
+	const char* Cstring = string.c_str();
+	size_t length_ = len_(Cstring) + 1;
+	string_ = new char[length_];
+	memcpy(string_, Cstring, length_);
 };
 
 char* MyString::c_str() const { // getter which return an array of char 
 	return string_;
 };
 
-
 size_t MyString::size() const{
-	size_t size;
-	size = 0;
 	size_t i = 0;
 	while(string_[i]!='\0'){
-		size += 1;
 		i++;
 	}
-	return size;
+	return i ;
 };
 
 
 
 void MyString::clear(){
-	;
+// void * memset ( void * ptr, int value, size_t num  -> Fill block of memory;
+	
+	memset (string_, 0, MyString::size() + 1);
 };
 
 
@@ -50,8 +40,7 @@ MyString MyString::operator+(const char* string){
 };
 
 
-
-//Student B
+// ############### STUDENT B ##################
 
 MyString::MyString(){ //constructeur par défaut
 
@@ -71,21 +60,16 @@ MyString::MyString(const char* c){
 
 	 if ((c != NULL) && (c[0] != '\0')){
 
-		int n = 0;
-		while (c[n] != '\0'){
- 			n++;
+		size_t n = len_(c);
+		string_ = new char[n+1];
+		for (int i=0; i < n+1; i++){
+			string_[i] = c[i];
 		}
-
-		length_ = n;
-		string_ = new char[n];
-		for (int j=0; j < n; j++){
-			string_[j] = c[j];
-		}
-		string_[n]='\0';
+		string_[n+1]='\0';
 	}	
 	else {
-		length_ = 0;
-		string_ = new char[0];
+		string_ = new char[1];
+		string_[1] = '\0';
 		}
 };
 
@@ -95,16 +79,21 @@ size_t MyString::max_size() const {
 };
 
 
-size_t MyString::length() const {
-
-	size_t len;
-	len = 0;
-	size_t i = 0;
-	while(string_[i]!='\0'){
-		len += 1;
+size_t MyString::len_(const char* s) const{
+	int i =0;
+	while (s[i] != '\0'){
 		i++;
 	}
-	return len;
+	return i;
+
+};
+
+size_t MyString::length() const{
+	int i =0;
+	while (string_[i] =! '\0'){
+		i++;
+	}
+	return i;
 
 };
 
@@ -136,7 +125,7 @@ MyString MyString::operator+(char c){
 
 
 
-//Student C
+// ##################   Student C  #################
 
 MyString::~MyString(){
 	delete [] string_;
