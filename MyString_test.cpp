@@ -1,21 +1,34 @@
-#include<iostream>
 #include "gtest/gtest.h"
 #include "MyString.cpp"
-TEST(GTestTests, DummyTest) {
+
+TEST(GTestTests, DefautlConstructorTest) {
 	MyString string;
-	bool test = true;
-	char* c_string = string.c_str();
-	char hello[] = {'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r','l', 'd', '\0'};
-	short int i = 0;
-	while(c_string[i] != '\0' && hello[i] != '\0'){
-		if (c_string[i] != hello[i])
-		{
-			test = false;
-		}
-		i++;
-	}
-	EXPECT_TRUE(test);
+	const char* Cstring = string.c_str();
+	EXPECT_STREQ(Cstring, "Hello World");
 }
+
+TEST(GTestTests, CopyConstructorTest) {
+	MyString string("Hello World");
+	MyString cpy_string(string);
+	EXPECT_STREQ(string.c_str(), cpy_string.c_str());
+
+	MyString empty_string("");
+	MyString cpybis_string(empty_string);
+	EXPECT_STREQ(empty_string.c_str(), cpybis_string.c_str());
+};
+
+TEST(GTestTests, CStrTest) {
+	MyString string("Hello World");
+	EXPECT_STREQ(string.c_str(), "Hello World");
+};
+
+TEST(GTestTests, ClearTest) {
+	MyString string("Hello World");
+	string.clear();
+	EXPECT_STREQ(string.c_str(), "");
+	size_t expected_size = 0;
+	EXPECT_EQ(string.size(), expected_size);
+};
 
 
 
