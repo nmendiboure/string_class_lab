@@ -50,14 +50,27 @@ MyString MyString::operator+(const char* str){
 
 MyString::MyString(){ 
 /* Default Constructor which creates a array of chars "Hello World"*/ 
-
-	char string[] = {'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r','l', 'd', '\0'};
+	size_t length_=12;
+	string_=new char[12];
+	string_[0]='H';
+	string_[1]='e';
+	string_[2]='l';
+	string_[3]='l';
+	string_[4]='o';
+	string_[5]=' ';
+	string_[6]='W';
+	string_[7]='o';
+	string_[8]='r';
+	string_[9]='l';
+	string_[10]='d';
+	string_[11]='\0';
+	/*char string[] = {'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r','l', 'd', '\0'};
 	size_t i = 0;
 	while(string[i] != '\0'){
 		string_[i] = string[i];
 		i++;
 	}
-	string_[i] = string[i];
+	string_[i] = string[i]; */
 
 };
 
