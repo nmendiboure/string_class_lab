@@ -60,4 +60,15 @@ TEST(GTestTests, CharConcatenationOperatorTest) {
 	string3=string3+'z';
 	EXPECT_STREQ(string3.c_str(), "AZERTYUIOPz");
 };
+//test de la fonction à corriger
+TEST(GTestTests, StringConcatenationOperatorTest) {
+	MyString s("AZERTYUIOP");
+	char* test=new char[4];
+	for(int i=0;i<3;i++){
+		test[i]='a';
+	}
+	test[3]='\0';
+	s=s+test;
+	EXPECT_STREQ(s.c_str(), "AZERTYUIOPaaa");
+};
 
