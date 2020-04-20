@@ -6,5 +6,6 @@ MyTest: MyString_test.o
 MyString_test.o: MyString_test.cpp 
 	g++ $(CXXFLAGS) -c MyString_test.cpp -o MyString_test.o -Igoogletest-release-1.10.0/googletest/include/ -std=c++11 
 
-
+clean:
+	rm MyString_test.o run_tests 
 
