@@ -37,11 +37,15 @@ void * memset ( void * ptr, int value, size_t num  -> Fill block of memory; */
 };
 
 
-/*MyString MyString::operator=(char c){
-	;
+MyString MyString::operator=(char c){
+	length_ = 2;
+	string_  = new char[length_];
+	string_[0]=c;
+	string_[1]='\0';
+	return *this;
 };
 
-MyString MyString::operator+(const char* str){
+/*MyString MyString::operator+(const char* str){
 	;
 };*/
 
@@ -161,7 +165,7 @@ see more on http://www.cplusplus.com/reference/string/string/resize/
 
 
 
-
+//opérateur "=" d'assignement
 MyString MyString::operator=(const MyString &string){
 	if(this == &string){
 		return *this;
@@ -177,7 +181,7 @@ MyString MyString::operator=(const MyString &string){
 };
 
 
-
+//opérateur + de concaténation
 MyString MyString::operator+(char c){
 	length_ = MyString::length();
 	if (length_ +1 < MyString::max_size()){
