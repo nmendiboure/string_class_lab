@@ -59,16 +59,29 @@ TEST(GTestTests, CharConcatenationOperatorTest) {
 	MyString string3("AZERTYUIOP");
 	string3=string3+'z';
 	EXPECT_STREQ(string3.c_str(), "AZERTYUIOPz");
+	MyString string4("AZERTYUIOP");
+	string4=string4+'\0';
+	EXPECT_STREQ(string4.c_str(), "AZERTYUIOP");
 };
 //test de la fonction à corriger
 TEST(GTestTests, StringConcatenationOperatorTest) {
 	MyString s("AZERTYUIOP");
-	char* test=new char[4];
-	for(int i=0;i<3;i++){
+	char* test=new char[100000];
+	for(int i=0;i<100000;i++){
 		test[i]='a';
 	}
-	test[3]='\0';
-	s=s+test;
-	EXPECT_STREQ(s.c_str(), "AZERTYUIOPaaa");
+	test[100000]='\0';
+	MyString v=s+test;
+	
+	EXPECT_STREQ(v.c_str(), "AZERTYUIOP");
+
+	char* test2=new char[5];
+	for(int i=0;i<5;i++){
+		test2[i]='a';
+	}
+	test[5]='\0';
+	MyString p=s+test2;
+	EXPECT_STREQ(p.c_str(), "AZERTYUIOPaaaaa");
+
 };
 
