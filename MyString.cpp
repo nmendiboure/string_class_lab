@@ -38,13 +38,17 @@ void * memset ( void * ptr, int value, size_t num  -> Fill block of memory; */
 
 
 MyString MyString::operator=(char c){
-	length_ = 2;
-	string_  = new char[length_];
-	string_[0]=c;
-	string_[1]='\0';
+	if(c!='\0'){
+		length_ = 2;
+		string_  = new char[length_];
+		string_[0]=c;
+		string_[1]='\0';
 	return *this;
+	} else {
+	return *this;
+	};
 };
-//fonction à corriger
+
 MyString MyString::operator+(const char* str){
 	length_ = MyString::length();
 	unsigned i = 0;
@@ -54,16 +58,16 @@ MyString MyString::operator+(const char* str){
 	if (length_ +i+1< MyString::max_size()){
 		char* c_ = new char[length_+i+1];
 		for(unsigned u=0; u < length_ ; u++){
-			c_[i]=string_[i];
+			c_[u]=string_[u];
 		}
 		for(unsigned u=0; u < i; u++){
-			c_[i+length_]=str[i];
+			c_[u+length_]=str[u];
 		}
 		c_[i+length_]='\0';
 		MyString My_New_String (c_);
 		return My_New_String;
 	} else {
-		MyString My_New_String(string_);
+		MyString My_New_String (string_);
 		return My_New_String;
 		};
 };
