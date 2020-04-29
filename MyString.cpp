@@ -4,7 +4,7 @@
 
 MyString::MyString(const MyString &string){  
 /*copy constructor, takes a MyString Object and return a new Object with the same content*/
-
+//tested
 	const char* Cstring = string.c_str();
 	length_ = len_(Cstring) + 1;
 	string_ = new char[length_];
@@ -13,6 +13,7 @@ MyString::MyString(const MyString &string){
 
 char* MyString::c_str() const { 
 /* getter which return an array of characters */
+//tested
 	return string_;
 };
 
@@ -36,19 +37,21 @@ void * memset ( void * ptr, int value, size_t num  -> Fill block of memory; */
 	memset (string_, 0, MyString::size() + 1);
 };
 
-
+/* Assignement operator that works with one char*/
 MyString MyString::operator=(char c){
 	if(c!='\0'){
 		length_ = 2;
 		string_  = new char[length_];
-		string_[0]=c;
-		string_[1]='\0';
+		string_[0] = c;
+		string_[1] = '\0';
 	return *this;
 	} else {
+	string_=new char[0];
+	string_[0]='\0';
 	return *this;
 	};
 };
-
+/* Concatenation operator that works with one tab of characters*/
 MyString MyString::operator+(const char* str){
 	length_ = MyString::length();
 	unsigned i = 0;
@@ -91,14 +94,6 @@ MyString::MyString(){
 	string_[9]='l';
 	string_[10]='d';
 	string_[11]='\0';
-	/*char string[] = {'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r','l', 'd', '\0'};
-	size_t i = 0;
-	while(string[i] != '\0'){
-		string_[i] = string[i];
-		i++;
-	}
-	string_[i] = string[i]; */
-
 };
 
 
@@ -116,7 +111,7 @@ MyString::MyString(const char* str){
 	}	
 	else {
 		string_ = new char[1];
-		string_[1] = '\0';
+		string_[0] = '\0';
 		}
 };
 
@@ -175,11 +170,11 @@ see more on http://www.cplusplus.com/reference/string/string/resize/
 			memcpy(string_, My_New_String, n);
 		}
 		else {
-			char* My_New_String = new char[n];
-			memcpy(My_New_String, string_, n);
+			char* My_New_String = new char[n+1];
+			memcpy(My_New_String, string_, n+1);
 			My_New_String[n] = '\0';
-			string_ = new char[n];
-			memcpy(string_, My_New_String, n);
+			string_ = new char[n+1];
+			memcpy(string_, My_New_String, n+1);
 		}
 	}
 };
@@ -188,7 +183,7 @@ see more on http://www.cplusplus.com/reference/string/string/resize/
 
 
 
-//opérateur "=" d'assignement
+//assignement operator from one table of characters
 MyString MyString::operator=(const MyString &string){
 	if(this == &string){
 		return *this;
@@ -204,10 +199,10 @@ MyString MyString::operator=(const MyString &string){
 };
 
 
-//opérateur + de concaténation
+//concatenation operator with one character
 MyString MyString::operator+(char c){
 	length_ = MyString::length();
-	if (length_ +1 < MyString::max_size()){
+	if (length_ +1 < MyString::max_size() && c!='\0'){
 		char* c_ = new char[length_+2];
 		for (unsigned i=0; i < length_ +2; i++){
 		   	c_[i] = string_[i];
