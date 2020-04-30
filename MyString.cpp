@@ -183,7 +183,7 @@ see more on http://www.cplusplus.com/reference/string/string/resize/
 		if (n <= MyString::max_size()){
 			if (MyString::length() >= n){
 				char* My_New_String = new char[n+1];
-				memcpy(My_New_String, string_, n+1);
+				memcpy(My_New_String, string_, n);
 				My_New_String[n+1] = '\0';
 				string_ = new char[n+1];
 				memcpy(string_, My_New_String, n+1);
