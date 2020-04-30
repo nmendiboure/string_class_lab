@@ -97,6 +97,18 @@ TEST(GTestTests, ResizeStringTest) {
 	
 	str2.resize(100000000,'w');
 	EXPECT_STREQ(str2.c_str(), "azertyuiopqq");
+
+	str2.resize(14,'\0');
+	EXPECT_STREQ(str2.c_str(), "azertyuiopqq  ");
+	
+	MyString str3("aqwzsxedc");
+	str3.resize(9,'\0');
+	EXPECT_STREQ(str3.c_str(), "aqwzsxedc");
+
+	str3.resize(5,'\0');
+	EXPECT_STREQ(str3.c_str(), "aqwzs");
+	
+
 };
 
 TEST(GTestTests, MyStringAssignementOperatorTest) {
