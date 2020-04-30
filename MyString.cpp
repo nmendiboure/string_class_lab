@@ -155,7 +155,7 @@ see more on http://www.cplusplus.com/reference/string/string/resize/
 */
 	if (c !='\0'){
 		if (n <= MyString::max_size()){
-			if (MyString::length() < n){
+			if (MyString::length() <= n){
 
 				char* My_New_String = new char [n];
 				memcpy(My_New_String, string_, n);
@@ -181,14 +181,29 @@ see more on http://www.cplusplus.com/reference/string/string/resize/
 
 	else {
 		if (n <= MyString::max_size()){
-			if (MyString::length() > n){
+			if (MyString::length() >= n){
 				char* My_New_String = new char[n+1];
 				memcpy(My_New_String, string_, n+1);
-				My_New_String[n] = '\0';
+				My_New_String[n+1] = '\0';
 				string_ = new char[n+1];
 				memcpy(string_, My_New_String, n+1);
+			} else {  
+				char* My_New_String = new char [n+1];
+				memcpy(My_New_String, string_, n);
+
+			 	size_t i = MyString::length();
+				while(i < n){
+					My_New_String[i] = ' ';
+					i++;
+				}
+				My_New_String[n+1] = '\0';
+				string_ = new char[n+1];
+				memcpy(string_, My_New_String, n+1);				
+				
+
+
 			}
-		}
+		} 
 	}
 };
 
